@@ -1,24 +1,26 @@
-import logo from './logo.svg';
+import { useEffect } from 'react';
+import Web3 from 'web3';
+
+import Header from './modules/shared/components/Header';
 import './App.css';
+import { setUser } from './store/reducers/auth';
+import { Home } from './modules/home';
 
 function App() {
+  useEffect(() => {
+    (async () => {
+      const web3 = new Web3(Web3.givenProvider);
+      const accounts = await web3.eth.getAccounts();
+      setUser(accounts[0]);
+      console.log('abc');
+    })();
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header></Header>
+      <Home></Home>
+    </>
   );
 }
 
