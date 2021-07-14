@@ -27,7 +27,11 @@ export const userEntriesInfo = [
     unit: '%'
   },
   {
-    name: 'Your Total Winnings',
+    name: 'Your Total Winnings:',
+    unit: 'BBOX'
+  },
+  {
+    name: 'Your BBox Balance:',
     unit: 'BBOX'
   }
 ];

@@ -19,4 +19,11 @@ export const getBBoxHolderTaxAlloc = () =>
     .then(res => res / 2);
 export const getBBoxBuyThresh = () => contract.methods.buyThresh().call();
 
-export const getJackpotBalance = () => web3.eth.getBalance(config.lotteryWalletAddress);
+export const getJackpotBalance = () =>
+  contract.methods.balanceOf(config.lotteryWalletAddress).call();
+
+export const getBBoxDecimals = () => contract.methods.decimals().call();
+
+export const isAddress = address => web3.utils.isAddress(address);
+
+export const getBalanceOf = address => contract.methods.balanceOf(address).call();

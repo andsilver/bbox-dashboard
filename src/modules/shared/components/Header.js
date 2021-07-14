@@ -7,6 +7,7 @@ import { useMetaMask } from 'metamask-react';
 import { useDispatch } from 'react-redux';
 
 import { setUser } from '../../../store/reducers/auth';
+import { getBalanceOf } from '../helper/contract';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,24 @@ const Header = () => {
   const [username, setUsername] = useState('');
 
   useEffect(() => {
-    dispatch(setUser(account || null));
+    if (account) {
+      getBalanceOf(account).then(balance => {
+        console.log(balance);
+        dispatch(
+          setUser({
+            address: account.toLowerCase(),
+            balance
+          })
+        );
+      });
+    } else {
+      dispatch(
+        setUser({
+          address: null,
+          balance: 0
+        })
+      );
+    }
 
     if (account) {
       setUsername(account.slice(0, 4) + '...' + account.slice(-4));
