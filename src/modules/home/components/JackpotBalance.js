@@ -46,7 +46,7 @@ export const JackpotBalance = ({ capacity, balance, decimals }) => {
               variant="h5"
               style={{
                 color: jackpot.percent > 20 ? 'black' : 'white',
-                right: jackpot.percent > 20 ? 8 : -64
+                right: jackpot.percent > 20 ? 8 : -100
               }}
             >
               {jackpot.percent}%

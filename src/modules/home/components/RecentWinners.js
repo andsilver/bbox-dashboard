@@ -6,7 +6,7 @@ export const RecentWinners = ({ transactions }) => {
       title="RECENT WINNERS"
       width="30%"
       minWidth={480}
-      records={transactions.slice(0, 20).map(({ to, value, tokenDecimal }) => ({
+      records={transactions.slice(0, 10).map(({ to, value, tokenDecimal }) => ({
         name: to,
         value: +value / 10 ** +tokenDecimal
       }))}
